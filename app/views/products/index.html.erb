@@ -4,10 +4,12 @@
       <h2 class="mt-8 mb-10 text-4xl font-semibold font-heading">Productos más populares 🦄</h2>
     </div>
     <div class="flex flex-wrap -m-3 mb-16">
-    <%= render partial: 'product', collection:@products %>
+    <%= render partial: 'product', collection:@products%>
     </div>
     <div class="text-center">
-       <%= link_to "Ver más productos", root_path, class:"mb-4 px-6 py-4 text-sm text-white font-semibold bg-red-400 hover:bg-red-300 rounded transition duration-200" %>
+      <% if @products.next_page.present?  %>
+       <%= link_to "Ver más productos", products_path(page:@products.next_page), class:"mb-4 px-6 py-4 text-sm text-white font-semibold bg-red-400 hover:bg-red-300 rounded transition duration-200" %>
+      <% end %>
     </div>
   </div>
 </section>

@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.where(visible: true).order('id desc')
+    current_page = params[:page] || 1
+    @products = Product.where(visible: true).order(created_at: :desc).paginate(page: current_page, per_page: 6)
   end
 
   def new
@@ -57,6 +58,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :visible)
+    params.require(:product).permit(:name, :description, :visible, :image)
   end
 end

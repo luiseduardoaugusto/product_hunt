@@ -17,5 +17,7 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :visible, presence: true
-  validates :name, length: { minimum: 5, maximum: 50 }
+
+  has_one_attached :image, dependent: :destroy
+
 end

@@ -53,6 +53,7 @@ gem "bootsnap", require: false
 
 gem 'friendly_id', '~> 5.1'
 
+gem 'will_paginate', '~> 3.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
