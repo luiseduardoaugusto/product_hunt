@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   # patch 'products/:id', to: 'products#update'
 
   get 'main/welcome'
-  resources :products do
-    get 'search', on: :collection # /products/search
-  end
+    resources :products do
+      get 'search', on: :collection # /products/search
+      resources :comments, only: [:create, :destroy]
+    end
   root 'products#index'
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

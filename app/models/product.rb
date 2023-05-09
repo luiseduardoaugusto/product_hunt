@@ -23,5 +23,15 @@ class Product < ApplicationRecord
   has_many :product_categories
   has_many :categories, through: :product_categories
 
+  has_many :comments
+
+  has_many :votes, as: :votable # Polymorphic association
+
   accepts_nested_attributes_for :categories
+
+  def category_default
+    return self.categories.first.name if self.categories.any?
+
+    'Sin categoría'
+  end
 end
